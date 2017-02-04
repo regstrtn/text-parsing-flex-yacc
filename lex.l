@@ -78,9 +78,12 @@ extern FILE *out;
 																																						return AWARD;
 																																						} 
 
+
 \<div[ \r]class=\"tab-pane\"[ \r]id=\"resp-tab2\"\>			{fprintf(out, "PUBLICATIONS\n");} 
 \<div[ \r]class=\"tab-pane\"[ \r]id=\"resp-tab3\"\> 		{fprintf(out,"PROJECTS\n"); }
 \<div[ \r]class=\"tab-pane\"[ \r]id=\"resp-tab4\"\> 		{fprintf(out,"STUDENTS\n");}
+\<b\>Ph\.D\.[ \r]\<\/b\>Students\<\/u\>						{fprintf(out,"Ph.D. STUDENTS\n");}
+\<b\>MS[ \r]\<\/b\>Students\<\/u\>							{fprintf(out,"MS STUDENTS\n");}
 \<p\>\<span[ \r]*class=\"glyphicon[ \r]*glyphicon\-circle\-arrow\-right\"\>\<\/span\>  {
 																							return PBEGIN;
 																						}
