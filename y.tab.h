@@ -39,41 +39,35 @@
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     NUMBER = 258,
-     TOKHEAT = 259,
-     STATE = 260,
-     TOKTARGET = 261,
-     TOKTEMPERATURE = 262,
-     DUMY = 263,
-     NBSP = 264,
-     NAME = 265,
-     PHONE = 266,
-     AWARD = 267
+     NAME = 258,
+     PHONE = 259,
+     AWARD = 260,
+     WEB = 261,
+     DESG = 262,
+     RESP = 263,
+     EMAIL = 264
    };
 #endif
 /* Tokens.  */
-#define NUMBER 258
-#define TOKHEAT 259
-#define STATE 260
-#define TOKTARGET 261
-#define TOKTEMPERATURE 262
-#define DUMY 263
-#define NBSP 264
-#define NAME 265
-#define PHONE 266
-#define AWARD 267
+#define NAME 258
+#define PHONE 259
+#define AWARD 260
+#define WEB 261
+#define DESG 262
+#define RESP 263
+#define EMAIL 264
 
 
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 24 "y1.y"
+#line 29 "y1.y"
 {
         char *str;
 }
 /* Line 1529 of yacc.c.  */
-#line 77 "y.tab.h"
+#line 71 "y.tab.h"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1

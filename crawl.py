@@ -16,7 +16,7 @@ def storepage(curr_url):
 	data  = r.text
 	data = re.sub('data:image/jpeg;base64.*>', "searchforme>", data)
 	data = re.sub('[ \r\t]+', ' ', data)
-	data = re.sub('[\n]+', '\n', data) 
+	data = re.sub('[\n]+', '\n', data)
   
 	f.write(data)
 	f.close()

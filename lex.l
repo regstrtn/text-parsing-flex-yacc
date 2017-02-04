@@ -22,7 +22,6 @@
 																			memcpy( processed_phone, &data[index1], 15 );
 																			processed_phone[15]='\0';
 																			yylval.str = strdup(processed_phone);
-																			//printf("phone = %s\n",yylval.str);
 																			return PHONE;
 																			}
 
@@ -34,7 +33,7 @@
 																				memcpy( processed_data, &data[index1], index2-index1 );
 																				processed_data[index2-index1]='\0';
 																				yylval.str = strdup(processed_data);
-																				printf("mail = %s\n",yylval.str);
+																				return EMAIL;
 																				}
 
 \<div[ \r]*id=\"collapseOne\"[ \r]class=\"accordion-body[ \r]collapse[ \r]in\"[ \r]aria-expanded=\"true\"\>[ \t\n]*\<div[ \r]class=\"accordion-inner\"\>[ \t\n]*\<ul\>[ \t\n]*\<li\>.*\<\/li\>  {
@@ -45,7 +44,7 @@
 																																																memcpy( processed_data, &data[index1], index2-index1 );
 																																																processed_data[index2-index1]='\0';
 																																																yylval.str = strdup(processed_data);
-																																																printf("Responsibility = %s\n",yylval.str);}
+																																																return RESP;}
 \<p[ \r]style=\"font-weight:[ \r]bold;\"\>[ \t\n]*\<span\>.*\<\/span\> {
 																		char *data = strdup(yytext);
 																		char processed_data[500];
@@ -54,7 +53,7 @@
 																		memcpy( processed_data, &data[index1], index2-index1 );
 																		processed_data[index2-index1]='\0';
 																		yylval.str = strdup(processed_data);
-																		printf("designation = %s\n",yylval.str);
+																		return DESG;
 																		} 
 
 \<a[ \r]target=\"_blank\"[ \r]href=\".*\"\>[ \t\n]*Website 				{
@@ -65,7 +64,7 @@
 																		memcpy( processed_data, &data[index1], index2-index1 );
 																		processed_data[index2-index1]='\0';
 																		yylval.str = strdup(processed_data);
-																		printf("Website = %s\n",yylval.str);
+																		return WEB;
 																		}  
 collapseseven\"[ \r]class=\"accordion-body[ \r]collapse\"\>[ \r\t\n]*\<div[ \r]class=\"accordion-inner\"\>[ \r\t\n]*\<ul\>[ \r\t\n]*\<li\>.*\<\/li\>  {
 																																						char *data = strdup(yytext);
@@ -75,7 +74,6 @@ collapseseven\"[ \r]class=\"accordion-body[ \r]collapse\"\>[ \r\t\n]*\<div[ \r]c
 																																						memcpy( processed_data, &data[index1], index2-index1 );
 																																						processed_data[index2-index1]='\0';
 																																						yylval.str = strdup(processed_data);
-																																						//printf("award = %s\n",yylval.str);
 																																						return AWARD;
 																																						} 
 

@@ -7,14 +7,19 @@ void yyerror(const char *str)
         fprintf(stderr,"error: %s\n",str);
 }
  
-int yywrap()
-{
+int yywrap() {
         return 1;
 } 
   
-main()
-{
-        FILE * p =fopen("./fac/shamik.html","r");
+void main(int argc, char** argv) {
+        if(argc<2) {
+                fprintf(stderr, "Provide filename\n");
+                exit(0);
+        }
+        char fname[256] = {0};
+        strcpy(fname, "./fac/");
+        strcat(fname, argv[1]);
+        FILE * p =fopen(fname,"r");
         yyin =p;
         yyparse();
 } 
@@ -25,43 +30,55 @@ main()
         char *str;
 }
 
-%token <str> NUMBER TOKHEAT STATE TOKTARGET TOKTEMPERATURE DUMY NBSP NAME PHONE AWARD
+%token <str> NAME PHONE AWARD WEB DESG RESP EMAIL
 
 %%
+start: 
+        /*empty*/
+        | start info
+        ;
+
+info:   name
+        | phone
+        | web
+        | award
+        | desg
+        | email
+        | resp
+        ;
 name:
-        NAME{ printf("%s\n",$1);}
+        NAME { 
+               printf("%s\n",$1);
+        }
         ;
 phone:
-        PHONE {printf("%s\n",$1);}
+        PHONE { 
+                printf("%s\n",$1);
+        }
         ;
 award:
-        AWARD {printf("%s\n",$1);}
+        AWARD { 
+                printf("%s\n",$1);
+        }
         ;        
-commands: /* empty */
-        | commands command
-        ;
-
-command:
-        heat_switch
-        |
-        target_set
-        ;
-
-heat_switch:
-        TOKHEAT STATE
-        {
-                printf("\tHeat turned on or off\n");
+email: 
+        EMAIL {
+                printf("%s\n",$1);
         }
         ;
-
-target_set:
-        TOKTARGET TOKTEMPERATURE NUMBER
-        {
-                printf("\tTemperature set\n");
+desg: 
+        DESG {
+                printf("%s\n",$1);
         }
-        | NUMBER
         ;
-phone:
-        DUMY NBSP{printf("%s\n",$2);}
-
+web:   
+        WEB {
+                printf("%s\n",$1);
+        }
+        ;  
+resp: 
+        RESP {
+                printf("%s\n",$1);
+        }
+        ;
 %%

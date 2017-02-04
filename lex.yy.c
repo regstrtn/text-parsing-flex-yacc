@@ -1044,14 +1044,13 @@ YY_RULE_SETUP
 																			memcpy( processed_phone, &data[index1], 15 );
 																			processed_phone[15]='\0';
 																			yylval.str = strdup(processed_phone);
-																			//printf("phone = %s\n",yylval.str);
 																			return PHONE;
 																			}
 	YY_BREAK
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 29 "lex.l"
+#line 28 "lex.l"
 {
 																				char *data = strdup(yytext);
 																				char processed_data[500];
@@ -1060,13 +1059,13 @@ YY_RULE_SETUP
 																				memcpy( processed_data, &data[index1], index2-index1 );
 																				processed_data[index2-index1]='\0';
 																				yylval.str = strdup(processed_data);
-																				printf("mail = %s\n",yylval.str);
+																				return EMAIL;
 																				}
 	YY_BREAK
 case 4:
 /* rule 4 can match eol */
 YY_RULE_SETUP
-#line 40 "lex.l"
+#line 39 "lex.l"
 {
 																																																char *data = strdup(yytext);
 																																																char processed_data[500];
@@ -1075,12 +1074,12 @@ YY_RULE_SETUP
 																																																memcpy( processed_data, &data[index1], index2-index1 );
 																																																processed_data[index2-index1]='\0';
 																																																yylval.str = strdup(processed_data);
-																																																printf("Responsibility = %s\n",yylval.str);}
+																																																return RESP;}
 	YY_BREAK
 case 5:
 /* rule 5 can match eol */
 YY_RULE_SETUP
-#line 49 "lex.l"
+#line 48 "lex.l"
 {
 																		char *data = strdup(yytext);
 																		char processed_data[500];
@@ -1089,13 +1088,13 @@ YY_RULE_SETUP
 																		memcpy( processed_data, &data[index1], index2-index1 );
 																		processed_data[index2-index1]='\0';
 																		yylval.str = strdup(processed_data);
-																		printf("designation = %s\n",yylval.str);
+																		return DESG;
 																		} 
 	YY_BREAK
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 60 "lex.l"
+#line 59 "lex.l"
 {
 																		char *data = strdup(yytext);
 																		char processed_data[500];
@@ -1104,13 +1103,13 @@ YY_RULE_SETUP
 																		memcpy( processed_data, &data[index1], index2-index1 );
 																		processed_data[index2-index1]='\0';
 																		yylval.str = strdup(processed_data);
-																		printf("Website = %s\n",yylval.str);
+																		return WEB;
 																		}  
 	YY_BREAK
 case 7:
 /* rule 7 can match eol */
 YY_RULE_SETUP
-#line 70 "lex.l"
+#line 69 "lex.l"
 {
 																																						char *data = strdup(yytext);
 																																						char processed_data[500];
@@ -1126,25 +1125,25 @@ YY_RULE_SETUP
 case 8:
 /* rule 8 can match eol */
 YY_RULE_SETUP
-#line 84 "lex.l"
+#line 83 "lex.l"
 //{printf("\\n matched");}/* ignore end of line */;
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 85 "lex.l"
+#line 84 "lex.l"
 //{printf("\\t matched");}/* ignore whitespace */;
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 86 "lex.l"
+#line 85 "lex.l"
 //{printf(". matched");}/* ignore other characters */
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 88 "lex.l"
+#line 87 "lex.l"
 ECHO;
 	YY_BREAK
-#line 1148 "lex.yy.c"
+#line 1147 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2141,7 +2140,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 88 "lex.l"
+#line 87 "lex.l"
 
 
 
