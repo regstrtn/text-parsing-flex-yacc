@@ -75,6 +75,7 @@ extern FILE *out;
 																																						memcpy( processed_data, &data[index1], index2-index1 );
 																																						processed_data[index2-index1]='\0';
 																																						yylval.str = strdup(processed_data);
+																																						fprintf(out, "AWARDS\n");
 																																						return AWARD;
 																																						} 
 
@@ -82,7 +83,7 @@ extern FILE *out;
 \<div[ \r]class=\"tab-pane\"[ \r]id=\"resp-tab2\"\>			{fprintf(out, "PUBLICATIONS\n");} 
 \<div[ \r]class=\"tab-pane\"[ \r]id=\"resp-tab3\"\> 		{fprintf(out,"PROJECTS\n"); }
 \<div[ \r]class=\"tab-pane\"[ \r]id=\"resp-tab4\"\> 		{fprintf(out,"STUDENTS\n");}
-\<b\>Ph\.D\.[ \r]\<\/b\>Students\<\/u\>						{fprintf(out,"Ph.D. STUDENTS\n");}
+\<b\>Ph\.D\.[ \r]\<\/b\>Students\<\/u\>						{fprintf(out,"PhD STUDENTS\n");}
 \<b\>MS[ \r]\<\/b\>Students\<\/u\>							{fprintf(out,"MS STUDENTS\n");}
 \<p\>\<span[ \r]*class=\"glyphicon[ \r]*glyphicon\-circle\-arrow\-right\"\>\<\/span\>  {
 																							return PBEGIN;

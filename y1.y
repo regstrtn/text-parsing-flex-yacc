@@ -93,12 +93,12 @@ info:   name
         ;
 name:
         NAME { 
-               fprintf(out,"%s\n",$1);
+               fprintf(out,"NAME$%s\n",$1);
         }
         ;
 phone:
         PHONE { 
-                fprintf(out,"%s\n",$1);
+                fprintf(out,"PHONE$%s\n",$1);
         }
         ;
 award:
@@ -108,22 +108,22 @@ award:
         ;        
 email: 
         EMAIL {
-                fprintf(out,"%s\n",$1);
+                fprintf(out,"EMAIL$%s\n",$1);
         }
         ;
 desg: 
         DESG {
-                fprintf(out,"%s\n",$1);
+                fprintf(out,"DESG$%s\n",$1);
         }
         ;
 web:   
         WEB {
-                fprintf(out,"%s\n",$1); fflush(NULL); 
+                fprintf(out,"WEB$%s\n",$1); fflush(NULL); 
         }
         ;  
 resp: 
         RESP {
-                fprintf(out,"%s\n",$1);
+                fprintf(out,"RESP$%s\n",$1);
         }
         ;
 %%
