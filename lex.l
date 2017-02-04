@@ -87,8 +87,8 @@ extern FILE *out;
 \([0-9]{4}\)[ \r\t\n]*\<\/p\>	 {
 				//printf("%s\n", yytext);
 				char year[7];
-				strncpy(year, yytext, 6); 
-				fprintf(out, "PUBYEAR %s", year);
+				strncpy(year, yytext+1, 4); 
+				fprintf(out, "%s\n", year);
 				return PEND;
 			}																		     		
 \<\/p\>	 {
