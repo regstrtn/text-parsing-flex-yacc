@@ -17,7 +17,7 @@ extern FILE *out;
 
 \<i[ \r]class=\"fa[ \r]fa-phone\"\>\<\/i\>[ \t\n]*&nbsp;.*[ \t\n]*\<\/li\> {
 																			char *data = strdup(yytext);
-																			char processed_phone[16];
+																			char processed_phone[500];
 																			int index1= (int)(strstr(data,"&nbsp;")-data)+6;
 																			memcpy( processed_phone, &data[index1], 15 );
 																			processed_phone[15]='\0';
@@ -83,11 +83,17 @@ extern FILE *out;
 \<div[ \r]class=\"tab-pane\"[ \r]id=\"resp-tab4\"\> 		{fprintf(out,"STUDENTS\n");}
 \<p\>\<span[ \r]*class=\"glyphicon[ \r]*glyphicon\-circle\-arrow\-right\"\>\<\/span\>  {
 																							return PBEGIN;
-																		     			}
-\<\/p\>	 {
+																						}
+\([0-9]{4}\)[ \r\t\n]*\<\/p\>	 {
+				//printf("%s\n", yytext);
+				char year[7];
+				strncpy(year, yytext, 6); 
+				fprintf(out, "PUBYEAR %s", year);
 				return PEND;
+			}																		     		
+\<\/p\>	 {
+				return PEND; 
 			}
-
 \<[^\>]*\> 				/*Ignore all tags not handled so far*/
 
 

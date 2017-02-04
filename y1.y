@@ -118,7 +118,7 @@ desg:
         ;
 web:   
         WEB {
-                fprintf(out,"%s\n",$1);
+                fprintf(out,"%s\n",$1); fflush(NULL); 
         }
         ;  
 resp: 
