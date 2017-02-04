@@ -65,8 +65,9 @@
 																		processed_data[index2-index1]='\0';
 																		yylval.str = strdup(processed_data);
 																		return WEB;
+	
 																		}  
-collapseseven\"[ \r]class=\"accordion-body[ \r]collapse\"\>[ \r\t\n]*\<div[ \r]class=\"accordion-inner\"\>[ \r\t\n]*\<ul\>[ \r\t\n]*\<li\>.*\<\/li\>  {
+\<div[ \r]style=\"height:[ \r]0px;\"[ \r]id=\"collapseseven\"[ \r]class=\"accordion-body[ \r]collapse\"\>[ \r\t\n]*\<div[ \r]class=\"accordion-inner\"\>[ \r\t\n]*\<ul\>[ \r\t\n]*\<li\>.*\<\/li\>  {
 																																						char *data = strdup(yytext);
 																																						char processed_data[500];
 																																						int index1= (int)(strstr(data,"<li>")-data)+4;
@@ -76,11 +77,19 @@ collapseseven\"[ \r]class=\"accordion-body[ \r]collapse\"\>[ \r\t\n]*\<div[ \r]c
 																																						yylval.str = strdup(processed_data);
 																																						return AWARD;
 																																						} 
+\<p\>\<span[ \r]*class=\"glyphicon[ \r]*glyphicon\-circle\-arrow\-right\"\>\<\/span\>  {
+																							return PBEGIN;
+																		     			}
+
+\<\/p\>	 {
+				return PEND;
+			}
+
+\<[^\>]*\> 				/*Ignore all tags not handled so far*/
 
 
-
-[ \n]+                      			//{printf("\\n matched");}/* ignore end of line */;
+[ \n]+                      		//{printf("\\n matched");}/* ignore end of line */;
 [ \t]+                  			//{printf("\\t matched");}/* ignore whitespace */;
-.                       			//{printf(". matched");}/* ignore other characters */
+.                       			{ yylval.str = strdup(yytext); return CHR; }
 
 %%
