@@ -77,10 +77,13 @@
 																																						yylval.str = strdup(processed_data);
 																																						return AWARD;
 																																						} 
+
+\<div[ \r]class=\"tab-pane\"[ \r]id=\"resp-tab2\"\>			{printf("PUBLICATIONS\n");} 
+\<div[ \r]class=\"tab-pane\"[ \r]id=\"resp-tab3\"\> 		{printf("PROJECTS\n"); }
+\<div[ \r]class=\"tab-pane\"[ \r]id=\"resp-tab4\"\> 		{printf("STUDENTS\n");}
 \<p\>\<span[ \r]*class=\"glyphicon[ \r]*glyphicon\-circle\-arrow\-right\"\>\<\/span\>  {
 																							return PBEGIN;
 																		     			}
-
 \<\/p\>	 {
 				return PEND;
 			}
@@ -88,8 +91,8 @@
 \<[^\>]*\> 				/*Ignore all tags not handled so far*/
 
 
-[ \n]+                      		//{printf("\\n matched");}/* ignore end of line */;
-[ \t]+                  			//{printf("\\t matched");}/* ignore whitespace */;
+[\n]+                      		//{printf("\\n matched");}/* ignore end of line */;
+[ \t]{2,}                  			//{printf("\\t matched");}/* ignore whitespace */;
 .                       			{ yylval.str = strdup(yytext); return CHR; }
 
 %%
