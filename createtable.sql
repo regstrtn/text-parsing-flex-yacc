@@ -1,11 +1,11 @@
-drop table info;
-drop table projects; 
-drop table students;
-drop table publications;
-drop table awards;
+#drop table info;
+#drop table projects; 
+#drop table students;
+#drop table publications;
+#drop table awards;
+#fac_id INT NOT NULL AUTO_INCREMENT,
 
 CREATE TABLE IF NOT EXISTS info (
-  fac_id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(256),
   email VARCHAR(256),
   phone VARCHAR(256), 
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS info (
   website VARCHAR(256),
   designation VARCHAR(256),
   research_statement VARCHAR(2000),
-  PRIMARY KEY (fac_id)
+  PRIMARY KEY (name)
 );
 
 CREATE TABLE IF NOT EXISTS publications (

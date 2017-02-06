@@ -103,7 +103,7 @@ def readfile(fname, facname):
       line = f.readline()
   
   qval = ""
-  qfields = "name, student_name, student_type"
+  qfields = "name, student_name, student_type, student_research_area"
   line = f.readline()
   student_type = line.rstrip('\r\n')
   
@@ -111,11 +111,19 @@ def readfile(fname, facname):
     if('STUDENTS' in line):
       student_type = line.rstrip('\r\n')
       line = f.readline()
-    student_name = line.rstrip('\r\n')
+      line = line.rstrip('\r\n')
+    if('Area of Research:' in line):
+      splitname = line.split('Area of Research:')
+      student_name = splitname[0]
+      r_area = splitname[1].rstrip('\n\r')
+    else: 
+      student_name = line
+      r_area = ""
     qval = ""
     qval = qval + "'" + name + "',"
     qval = qval + "'" + student_name + "',"
     qval = qval + "'" + student_type + "',"
+    qval = qval + "'" + r_area + "',"
     qval = qval[:-1]
     insert("students", qfields, qval)
     line = f.readline()
